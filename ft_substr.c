@@ -6,7 +6,7 @@
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 23:35:31 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/05/31 19:04:47 by jgomes-c         ###   ########.fr       */
+/*   Updated: 2021/05/31 19:16:37 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	count;
 	size_t	s_len;
 	char	*str;
 
@@ -26,15 +25,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str = malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
-	count = 0;
-	if (start < len)
-	{
-		while (s[start + count] && count < len)
-		{
-			str[count] = s[start + count];
-			count++;
-		}
-	}
-	str[count] = '\0';
+	ft_strlcpy(str, s + start, len + 1);
 	return (str);
 }
