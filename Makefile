@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/05/31 09:28:02 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/05/31 10:12:17 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ SRC		=		ft_bzero.c \
 OBJ		=		$(SRC:.c=.o)
 
 # Compiling Variables
-CC		=	clang
+CC		=	gcc
 FLAG	=	-Wall -Wextra -Werror
 AR		=	ar -rcs
 RM		=	rm -f
