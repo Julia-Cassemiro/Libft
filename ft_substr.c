@@ -6,7 +6,7 @@
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 23:35:31 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/05/31 19:02:42 by jgomes-c         ###   ########.fr       */
+/*   Updated: 2021/05/31 19:04:47 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!str)
 		return (NULL);
 	count = 0;
-	if (start < (s_len))
+	if (start < len)
 	{
 		while (s[start + count] && count < len)
 		{
