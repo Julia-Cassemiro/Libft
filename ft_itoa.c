@@ -6,36 +6,47 @@
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:22:48 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/05/31 12:29:31 by jgomes-c         ###   ########.fr       */
+/*   Updated: 2021/05/31 18:36:38 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char	*ft_copy(char *dst, const char *src)
+{
+	size_t	i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
 char	*ft_itoa(int n)
 {
-	int			sign;
-	int			size;
-	char		*conv;
-	long int	nn;
+	char	*str;
 
-	sign = n < 0;
-	nn = n;
-	if (sign > 0)
-		nn = -nn;
-	size = 1;
-	while (n / 10 != 0 && size++)
-		n /= 10;
-	conv = malloc(sizeof(char) * (size + sign + 1));
-	if (!conv)
+	str = (char *)malloc(sizeof(char) * 2);
+	if (str == NULL)
 		return (NULL);
-	conv[size + sign] = '\0';
-	while (size-- != 0)
+	if (n == -2147483648)
+		return (ft_copy(str, "-2147483648"));
+	if (n < 0)
 	{
-		conv[size + sign] = nn % 10 + '0';
-		nn /= 10;
+		str[0] = '-';
+		str[1] = '\0';
+		str = ft_strjoin(str, ft_itoa(-n));
 	}
-	if (sign > 0)
-		conv[0] = '-';
-	return (conv);
+	else if (n >= 10)
+		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n < 10 && n >= 0)
+	{
+		str[0] = n + '0';
+		str[1] = '\0';
+	}
+	return (str);
 }
