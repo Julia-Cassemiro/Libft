@@ -17,10 +17,14 @@
 #ifndef LIBFT_H
 #define LIBFT_H
 
-#include <unistd.h>
+typedef struct s_list
+{
+	void 			*content;
+	struct s_list 	*next;
+} 					t_list;
+
+# include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 # include <limits.h>
 
 void	*ft_memset (void *str, int c, size_t n);
@@ -58,6 +62,8 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char		*ft_itoa(int n);
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+//functions bonus
+t_list	*ft_lstnew(void *content);
 
 #endif
 

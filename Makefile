@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/05/31 10:12:17 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/06/01 17:20:13 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,10 @@ SRC		=		ft_bzero.c \
 	
 OBJ		=		$(SRC:.c=.o)
 
+BONUS	=		ft_lstnew.c \
+
+BONUS_OBJ =		$(BONUS:.c=.o)	
+
 # Compiling Variables
 CC		=	gcc
 FLAG	=	-Wall -Wextra -Werror
@@ -61,13 +65,11 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ) 
 	@printf "Compilation complete.\n"
 
-
-test: $(NAME)
-	$(CC) $(FLAG) teste_main.c libft.a
-	./a.out
-
+bonus: 
+$(NAME): $(BONUS_OBJ) 
+	$(AR) $(NAME) $(BONUS_OBJ) 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(BONUS_OBJ)
 
 
 fclean: clean
