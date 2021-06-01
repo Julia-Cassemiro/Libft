@@ -6,47 +6,58 @@
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:22:48 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/05/31 18:36:38 by jgomes-c         ###   ########.fr       */
+/*   Updated: 2021/05/31 23:16:51 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_copy(char *dst, const char *src)
+static int	ft_nbsize(long n)
 {
-	size_t	i;
+	int		size;
 
-	i = 0;
-	while (src[i] != '\0')
+	size = 1;
+	while (n / 10)
 	{
-		dst[i] = src[i];
-		i++;
+		n /= 10;
+		size++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	if (n < 0)
+		size++;
+	return (size);
+}
+
+static long	ft_getunit(long n, int unit)
+{
+	while (unit--)
+		n /= 10;
+	return (n % 10);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
+	char	*res;
+	int		i;
+	int		j;
+	long	nbr;
 
-	str = (char *)malloc(sizeof(char) * 2);
-	if (str == NULL)
-		return (NULL);
-	if (n == -2147483648)
-		return (ft_copy(str, "-2147483648"));
-	if (n < 0)
+	nbr = n;
+	i = 0;
+	j = ft_nbsize(nbr);
+	res = (char *)malloc(sizeof(char) * (j + 1));
+	if (res)
 	{
-		str[0] = '-';
-		str[1] = '\0';
-		str = ft_strjoin(str, ft_itoa(-n));
+		if (nbr < 0)
+		{
+			res[i] = '-';
+			i++;
+			nbr *= -1;
+		}
+		while (j - i)
+		{
+			res[i] = '0' + ft_getunit(nbr, j - i - 1);
+			i++;
+		}
+		res[i] = '\0';
 	}
-	else if (n >= 10)
-		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
-	else if (n < 10 && n >= 0)
-	{
-		str[0] = n + '0';
-		str[1] = '\0';
-	}
-	return (str);
+	return (res);
 }
