@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/06/01 17:20:13 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/06/01 17:29:49 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ) 
 	@printf "Compilation complete.\n"
 
-bonus: 
+bonus: $(NAME)
+
 $(NAME): $(BONUS_OBJ) 
 	$(AR) $(NAME) $(BONUS_OBJ) 
 clean:
