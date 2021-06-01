@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/06/01 17:29:49 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/06/01 17:45:53 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC		=		ft_bzero.c \
 OBJ		=		$(SRC:.c=.o)
 
 BONUS	=		ft_lstnew.c \
+				ft_lstsize.c \
 
 BONUS_OBJ =		$(BONUS:.c=.o)	
 

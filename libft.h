@@ -64,6 +64,7 @@ char		*ft_itoa(int n);
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 //functions bonus
 t_list	*ft_lstnew(void *content);
+int	ft_lstsize(t_list *lst);
 
 #endif
 
