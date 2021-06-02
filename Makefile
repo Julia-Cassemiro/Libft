@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/06/02 15:39:44 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/06/02 16:06:01 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ BONUS	=		ft_lstnew.c \
 
 BONUS_OBJ =		$(BONUS:.c=.o)	
 
+# Compiling Variables
 CC		=	gcc
 FLAG	=	-Wall -Wextra -Werror
 AR		=	ar -rcs
