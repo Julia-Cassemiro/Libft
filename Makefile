@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/06/01 17:45:53 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/06/01 23:43:36 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,11 @@ OBJ		=		$(SRC:.c=.o)
 
 BONUS	=		ft_lstnew.c \
 				ft_lstsize.c \
+				ft_lstlast.c \
+				ft_lstadd_back.c \
+				ft_lstdelone.c \
+				ft_lstadd_front.c \
+				ft_lstiter.c \
 
 BONUS_OBJ =		$(BONUS:.c=.o)	
 
@@ -66,15 +71,21 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ) 
 	@printf "Compilation complete.\n"
 
-bonus: $(NAME)
+$(OBJ): $(SRC)
+	$(CC) $(FLAGS) -c $(SRC)
 
-$(NAME): $(BONUS_OBJ) 
-	$(AR) $(NAME) $(BONUS_OBJ) 
+bonus: $(BONUS_OBJ)
+	$(AR) $(NAME) $(BONUS_OBJ)
+
+$(BONUS_OBJ): $(BONUS)
+	$(CC) $(FLAGS) -c $(BONUS)
+
 clean:
 	$(RM) $(OBJ) $(BONUS_OBJ)
-
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
