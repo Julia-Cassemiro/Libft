@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 00:23:13 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/06/02 15:33:05 by jgomes-c         ###   ########.fr       */
+/*   Created: 2021/06/02 15:38:56 by jgomes-c          #+#    #+#             */
+/*   Updated: 2021/06/02 15:39:27 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void(*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*list;
+	t_list	*new;
 
-	if (*lst == NULL)
-		return ;
-	while (*lst)
+	if (!lst || !f)
+		return (NULL);
+	new = ft_lstnew(f(lst->content));
+	if (new == NULL)
 	{
-		list = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = list;
+		ft_lstclear(&new, del);
+		return (NULL);
 	}
-	*lst = NULL;
+	new->next = ft_lstmap(lst->next, f, del);
+	return (new);
 }
