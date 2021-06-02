@@ -6,7 +6,7 @@
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 12:00:00 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/05/28 13:25:50 by jgomes-c         ###   ########.fr       */
+/*   Updated: 2021/06/02 16:25:17 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 static int	ft_countwrd(char const *s, char c)
 {
-	unsigned int	count;
-	int				cntw;
+	int	i;
+	int	count;
+	int	w;
 
+	w = 0;
+	i = 0;
 	count = 0;
-	cntw = 0;
-	while (s[count])
-	{
-		while (s[count] == c)
+	while (s[i])
+	{	
+		if (s[i] == c)
+			w = 0;
+		else if (s[i] != c && w == 0)
+		{
+			w = 1;
 			count++;
-		if (s[count] != '\0')
-			cntw++;
-		while (s[count] && s[count] != c)
-			count++;
+		}
+		i++;
 	}
-	return (cntw);
+	return (count);
 }
 
 static char	*ft_strndup(const char *s, size_t n)
@@ -52,7 +56,7 @@ char	**ft_split(char const *s, char c)
 
 	count = 0;
 	i = 0;
-	len = (char **)malloc(sizeof(char *) * (ft_countwrd(s, c)) + 1);
+	len = (char **)malloc((ft_countwrd(s, c) + 1) * sizeof(char *));
 	if (len == NULL)
 		return (NULL);
 	while (s[i])
