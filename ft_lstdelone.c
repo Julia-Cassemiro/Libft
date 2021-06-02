@@ -6,7 +6,7 @@
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 22:34:22 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/06/02 00:17:04 by jgomes-c         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:20:28 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 	list = lst;
 	if (!list)
 		return ;
-	list->content;
+	(list->content);
 	del(list->content);
 	free(list);
 }
