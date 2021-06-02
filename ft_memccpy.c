@@ -21,14 +21,14 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	char		c2;
 
 	count = 0;
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
+	dest2 = dest;
+	src2 = src;
 	while (count < n)
 	{
 		c2 = src2[count];
 		dest2[count] = src2[count];
 		count++;
-		if (c2 == (char)c)
+		if (c2 == c)
 		{
 			ret = (char *)&dest2[count];
 			return (ret);
