@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/06/01 23:43:36 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/06/02 00:24:54 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ BONUS	=		ft_lstnew.c \
 				ft_lstdelone.c \
 				ft_lstadd_front.c \
 				ft_lstiter.c \
+				ft_lstclear.c \
 
 BONUS_OBJ =		$(BONUS:.c=.o)	
 
