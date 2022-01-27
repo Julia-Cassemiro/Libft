@@ -16,6 +16,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <stdio.h>
+# include <stddef.h>
+# define ERROR -1
+# define STD_LINE 1
+# define LAST_LINE 0
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 
 typedef struct s_list
 {
@@ -67,4 +77,9 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int		ft_strchr_index(const char *s, int c, int offset);
+int		get_next_line(int fd, char **line, int to_free);
+char	*ft_strcpy(char *dst, const char *src);
+void	*ft_realloc(void *ptr, size_t size);
+
 #endif

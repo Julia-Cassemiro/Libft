@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strchr_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 15:38:56 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/10/04 10:30:14 by jgomes-c         ###   ########.fr       */
+/*   Created: 2021/09/23 09:17:35 by jgomes-c          #+#    #+#             */
+/*   Updated: 2021/10/04 10:33:56 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_strchr_index(const char *s, int c, int offset)
 {
-	t_list	*new;
+	int	i;
 
-	if (!lst || !f)
-		return (NULL);
-	new = ft_lstnew(f(lst->content));
-	if (new == NULL)
+	if (offset == -1)
 	{
-		ft_lstclear(&new, del);
-		return (NULL);
+		i = ft_strlen(s);
+		while (--i >= 0)
+			if (s[i] == (char)c)
+				return (i);
 	}
-	new->next = ft_lstmap(lst->next, f, del);
-	return (new);
+	else
+	{
+		i = -1;
+		while (s[++i + offset])
+		{
+			if (s[i + offset] == (char)c)
+				return (i + offset);
+		}
+		if (c == 0 && s)
+			return (i + offset);
+	}
+	return (-1);
 }

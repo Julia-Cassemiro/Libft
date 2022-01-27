@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 15:38:56 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/10/04 10:30:14 by jgomes-c         ###   ########.fr       */
+/*   Created: 2021/09/23 10:04:55 by jgomes-c          #+#    #+#             */
+/*   Updated: 2021/10/04 10:29:25 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	*ft_realloc(void *ptr, size_t size)
 {
-	t_list	*new;
+	char	*new;
 
-	if (!lst || !f)
-		return (NULL);
-	new = ft_lstnew(f(lst->content));
-	if (new == NULL)
+	if (!ptr)
 	{
-		ft_lstclear(&new, del);
-		return (NULL);
+		new = (char *)malloc(sizeof(*new) * size);
+		if (!new)
+			return (ptr);
+		return (new);
 	}
-	new->next = ft_lstmap(lst->next, f, del);
+	if (size == 0 && ptr)
+	{
+		new = (char *)malloc(sizeof(*new));
+		if (!new)
+			return (ptr);
+		new[0] = 0;
+		return (new);
+	}
+	new = (char *)malloc(sizeof(*new) * size);
+	if (!new)
+		return (ptr);
+	new = ft_strcpy(new, ptr);
+	free(ptr);
 	return (new);
 }

@@ -6,7 +6,7 @@
 #    By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 10:25:25 by jgomes-c          #+#    #+#              #
-#    Updated: 2021/06/02 16:06:01 by jgomes-c         ###   ########.fr        #
+#    Updated: 2021/09/23 10:07:57 by jgomes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,10 @@ SRC		=		ft_bzero.c \
 				ft_putnbr_fd.c \
 				ft_itoa.c \
 				ft_strmapi.c \
+				ft_strchr_index.c \
+				get_next_line.c \
+				ft_realloc.c \
+				ft_strcpy.c \
 	
 OBJ		=		$(SRC:.c=.o)
 

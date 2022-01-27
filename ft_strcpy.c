@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-c <jgomes-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 15:38:56 by jgomes-c          #+#    #+#             */
-/*   Updated: 2021/10/04 10:30:14 by jgomes-c         ###   ########.fr       */
+/*   Created: 2021/09/23 10:07:24 by jgomes-c          #+#    #+#             */
+/*   Updated: 2021/10/04 10:29:37 by jgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+char	*ft_strcpy(char *dst, const char *src)
 {
-	t_list	*new;
+	size_t	i;
 
-	if (!lst || !f)
-		return (NULL);
-	new = ft_lstnew(f(lst->content));
-	if (new == NULL)
+	i = -1;
+	if (!src)
 	{
-		ft_lstclear(&new, del);
-		return (NULL);
+		dst[0] = 0;
+		return (dst);
 	}
-	new->next = ft_lstmap(lst->next, f, del);
-	return (new);
+	while (src[++i])
+		dst[i] = src[i];
+	dst[i] = '\0';
+	return (dst);
 }
